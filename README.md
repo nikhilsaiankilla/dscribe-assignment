@@ -1,775 +1,190 @@
-Pasted markdown(3).md
-File
-dont give me code!! ask me what steps completed what next we need plan!!
+# Discharge Summary Agent
 
-Good. Stop asking for code right now.
+An agentic AI system that reads raw clinical source notes (PDFs) for a patient and produces a structured discharge summary draft for clinician review. The output is always a draft — never auto-finalized.
 
-The biggest mistake candidates make on this assignment is jumping into implementation before validating the architecture.
+---
 
-Based on your plan and notes
+## What it does
 
-, tell me exactly where you are today.
+Given a folder of patient PDFs (admission notes, progress notes, lab results, medication records), the agent:
 
-Reply in this format:
+1. Extracts text from each PDF using vision-based OCR
+2. Parses structured clinical facts from the extracted text
+3. Merges facts across all documents into a single patient memory
+4. Detects conflicts and missing fields during the merge
+5. Reconciles admission vs. discharge medications
+6. Checks for drug interactions
+7. Generates a structured discharge summary with all gaps and flags clearly marked
 
-1. PDF Extraction
-   Status:
-   Output Example:
+---
 
-2. Fact Extraction
-   Status:
-   Output Example:
+## Agent loop design
 
-3. Patient Memory
-   Status:
-   Output Example:
+The planner is a **state-machine** — not an LLM replanning on every step. It inspects the current memory state and decides the next tool to call based on what is still incomplete.
 
-4. Planner
-   Status:
-   Output Example:
+The decision order is:
 
-5. Agent Loop
-   Status:
-   Output Example:
+```
+No diagnoses?         → extract_facts
+No medications?       → flag_missing
+Reconciliation done?  → reconcile_medications
+Drug check done?      → check_drug_interactions
+Otherwise             → generate_summary
+```
 
-6. Medication Reconciliation
-   Status:
+A hard cap of **10 iterations** is enforced. If the agent hits this limit without completing, it writes a fallback message and exits — it never loops forever.
 
-7. Conflict Detection
-   Status:
+Every step emits a structured trace:
 
-8. Summary Generation
-   Status:
+```
+reasoning → tool chosen → inputs → result → next decision
+```
 
-9. Trace Logging
-   Status:
-   Then I'll tell you the next highest-leverage step.
+Traces are saved to `outputs/trace.json` for full observability.
 
-One thing I want to stress-test immediately:
+---
 
-What have you actually completed?
-For example:
+## PDF ingestion
 
-Can you already extract text from all PDFs in a patient folder?
+PDFs are converted page-by-page to images using `pdfium`, then base64-encoded and sent to **Claude Haiku** (vision model) for text extraction.
 
-Can you extract diagnoses, meds, allergies into structured JSON?
+Why vision instead of local OCR (e.g. Tesseract): the source documents include handwritten nurse charts and scanned forms. Local OCR models were too RAM-heavy and caused the machine to stall. Claude Haiku handles these reliably and keeps the pipeline fast.
 
-Are facts stored with source attribution?
+Extracted text is cached per patient so the same PDF is never re-processed on re-runs.
 
-Can you generate a discharge summary from memory?
+---
 
-Is there a working end-to-end pipeline for one patient?
+## Fact extraction
 
-If the answer to the last question is no, then do not build:
+Extracted text is passed to **GPT-4o-mini** using structured output parsing. Every fact (diagnosis, medication, allergy, lab result) is tagged with its source filename at extraction time, so the summary always knows which document a claim came from.
 
-More agents
+---
 
-More tools
+## No-fabrication guardrail
 
-More workflows
+This is the most important safety property. The system enforces it at two levels:
 
-Mem0 integration
+**Prompt level** — the fact extraction prompt explicitly instructs the model never to infer, guess, or fill in missing values. If a field is not present in the document, it must be left null.
 
-LangGraph
+**Code level** — after extraction, `PatientMemory.check_missing()` scans all required fields. Any field that is null or absent is added to `missing_fields` with the label:
 
-Multi-agent systems
-
-The assignment is graded on whether a single patient can go:
-
-Patient Folder
-↓
-PDFs
-↓
-Fact Extraction
-↓
-Patient Memory
-↓
-Discharge Summary
-without hallucinating.
-
-Tell me what's already working, and I'll help you prioritize the next milestone instead of writing code prematurely.
-
-we completed import base64
-import hashlib
-import json
-import logging
-import os
-from concurrent.futures import ThreadPoolExecutor, as_completed
-from pathlib import Path
-
-import anthropic
-import pypdfium2 as pdfium
-from PIL import Image
-import io
-
-from dotenv import load_dotenv
-
-load_dotenv()
-
-logging.basicConfig(
-level=logging.INFO,
-format="%(asctime)s - %(levelname)s - %(message)s"
-)
-
-CACHE_DIR = Path("./cache")
-CACHE_DIR.mkdir(exist_ok=True)
-
-class PDFReader:
-\_client = None
-
-    @classmethod
-    def get_client(cls):
-        if cls._client is None:
-            cls._client = anthropic.Anthropic(
-                api_key=os.environ.get("ANTHROPIC_API_KEY")
-            )
-        return cls._client
-
-    @classmethod
-    def get_cache_key(cls, pdf_path: Path) -> str:
-        stat = pdf_path.stat()
-        unique = f"{pdf_path.name}-{stat.st_size}-{stat.st_mtime}"
-        return hashlib.md5(unique.encode()).hexdigest()
-
-    @classmethod
-    def load_cache(cls, cache_key: str) -> dict | None:
-        cache_file = CACHE_DIR / f"{cache_key}.json"
-        if cache_file.exists():
-            logging.info("Cache hit — loading from disk")
-            with open(cache_file, "r", encoding="utf-8") as f:
-                return json.load(f)
-        return None
-
-    @classmethod
-    def save_cache(cls, cache_key: str, data: dict):
-        cache_file = CACHE_DIR / f"{cache_key}.json"
-        with open(cache_file, "w", encoding="utf-8") as f:
-            json.dump(data, f, ensure_ascii=False, indent=2)
-        logging.info(f"Saved to cache: {cache_file}")
-
-    @classmethod
-    def page_to_base64(cls, page) -> str:
-        bitmap = page.render(scale=2)
-        image = bitmap.to_pil()
-        buffer = io.BytesIO()
-        image.save(buffer, format="JPEG", quality=85)
-        return base64.standard_b64encode(buffer.getvalue()).decode("utf-8")
-
-    @classmethod
-    def extract_page_text(cls, page_idx: int, pdf_path: str) -> tuple[int, str]:
-        try:
-            doc = pdfium.PdfDocument(pdf_path)
-            page = doc[page_idx]
-            image_b64 = cls.page_to_base64(page)
-
-            client = cls.get_client()
-            response = client.messages.create(
-                model="claude-haiku-4-5-20251001",
-                max_tokens=4096,
-                messages=[
-                    {
-                        "role": "user",
-                        "content": [
-                            {
-                                "type": "image",
-                                "source": {
-                                    "type": "base64",
-                                    "media_type": "image/jpeg",
-                                    "data": image_b64,
-                                },
-                            },
-                            {
-                                "type": "text",
-                                "text": "Extract all text from this scanned document page. Output only the extracted text, no commentary.",
-                            },
-                        ],
-                    }
-                ],
-            )
-
-            text = response.content[0].text.strip()
-            logging.info(f"Done page {page_idx + 1}")
-            return page_idx, text
-
-        except Exception as e:
-            logging.error(f"Failed on page {page_idx + 1}: {e}")
-            return page_idx, ""
-
-    @classmethod
-    def read(cls, pdf_path: str) -> dict:
-        pdf_path = Path(pdf_path)
-
-        if not pdf_path.exists():
-            raise FileNotFoundError(f"PDF not found: {pdf_path}")
-
-        # check cache first
-        cache_key = cls.get_cache_key(pdf_path)
-        cached = cls.load_cache(cache_key)
-        if cached:
-            return cached
-
-        logging.info(f"Reading {pdf_path}")
-
-        doc = pdfium.PdfDocument(str(pdf_path))
-        page_count = len(doc)
-        del doc
-
-        pages = [None] * page_count
-
-        with ThreadPoolExecutor(max_workers=5) as executor:
-            futures = {
-                executor.submit(
-                    cls.extract_page_text, idx, str(pdf_path)
-                ): idx
-                for idx in range(page_count)
-            }
-
-            for future in as_completed(futures):
-                idx, text = future.result()
-                pages[idx] = {
-                    "page": idx + 1,
-                    "method": "claude-vision",
-                    "text": text,
-                }
-
-        full_text = "\n\n".join(
-            f"PAGE {p['page']}\n{p['text']}" for p in pages
-        )
-
-        result = {
-            "file_name": pdf_path.name,
-            "page_count": page_count,
-            "pages": pages,
-            "full_text": full_text,
-        }
-
-        cls.save_cache(cache_key, result)
-
-        return result
-
-and storing in the cache filder to avoid multi ai calls!!
-
-That's a solid Phase 1 completion.
-
-What you have now is:
-
-PDF
-↓
-Page Images
-↓
-Claude Vision OCR
-↓
-Text
-↓
-Cache
-For this assignment, that's completely acceptable.
-
-A few observations:
-
-Strong decisions
-✅ Page-level parallelization
-
-✅ Cache layer
-
-✅ Page attribution preserved
-
-✅ Full text aggregation
-
-✅ Works for scanned PDFs
-
-✅ No dependency on OCR quality from EasyOCR/Tesseract
-
-What I would NOT do next
-Don't build:
-
-Mem0
-
-Multi-agent systems
-
-LangGraph
-
-Complex planner
-
-Vector DB
-
-Pinecone
-
-None of those increase your score right now.
-
-My next question
-After this OCR step:
-
-full_text
-what have you built?
-
-Do you have:
-
-Option A
-Just raw text extraction
-
-{
-file_name,
-full_text
-}
-and nothing else?
-
-OR
-
-Option B
-Fact extraction already exists
-
-{
-diagnoses: [],
-medications: [],
-allergies: [],
-labs: [],
-procedures: []
-}
-with source tracking.
-
-Because if you're still at Option A, the next milestone is 100% Fact Extraction.
-
-Not planner.
-
-Not memory.
-
-Not agent loop.
-
-The assignment becomes interesting only after you can transform:
-
-Admission note
-Progress note
-Lab report
-Discharge note
-into:
-
-{
-"diagnoses": [
-{
-"value": "Pneumonia",
-"source": "progress_note.pdf"
-}
-]
-}
-Once that works:
-
-PDFs
-↓
-OCR
-↓
-Fact Extraction
-you've completed about 60% of the assignment.
-
-So tell me:
-
-Can you already extract structured facts from the OCR text, or is OCR the furthest point you've reached?
-
-Discharge Summary Agent - Project Context
-Assignment Goal
-Build an agentic AI system that reads multiple patient PDFs and generates a structured discharge summary draft for clinician review.
-
-Key requirement:
-
-Never hallucinate. Never invent clinical facts.
-
-If information is missing:
-
+```
 MISSING - CLINICIAN REVIEW REQUIRED
-If information conflicts:
-
-CONFLICT DETECTED - CLINICIAN REVIEW REQUIRED
-The assignment is evaluating:
-
-Agent design
-
-Planning and replanning
-
-Tool usage
-
-Medication reconciliation
-
-Conflict detection
-
-Missing data handling
-
-Observability traces
-
-Safety
-
-Not RAG quality.
-
-Not embeddings.
-
-Not fancy frameworks.
-
-Important Realization
-Do NOT build:
-
-PDF
-↓
-Embedding
-↓
-RAG
-↓
-Summary
-That is just a chatbot.
-
-Build:
-
-PDF
-↓
-Fact Extraction
-↓
-Patient Memory
-↓
-Planner Agent
-↓
-Tool Calls
-↓
-State Updates
-↓
-Summary Draft
-The assignment is fundamentally a state-management and decision-making problem.
-
-Current Architecture
-src/
-│
-├── agent/
-│ ├── state.py
-│ ├── planner.py
-│ └── discharge_agent.py
-│
-├── tools/
-│ ├── pdf_reader.py
-│ ├── fact_extractor.py
-│ ├── medication_reconciliation.py
-│ ├── conflict_detector.py
-│ └── retrieval.py
-│
-├── memory/
-│ └── patient_memory.py
-│
-├── prompts/
-│ ├── extract.txt
-│ ├── planner.txt
-│ └── summary.txt
-│
-├── models/
-│ ├── diagnosis.py
-│ ├── medication.py
-│ ├── patient.py
-│ └── discharge_summary.py
-│
-├── traces/
-│ └── trace_logger.py
-│
-└── main.py
-Development Plan
-Phase 1
-PDF Extraction
-
-Goal:
-
-pdf -> raw text
-Use:
-
-PyMuPDF
-Output:
-
-[
-{
-"file": "admission_note.pdf",
-"text": "..."
-}
-]
-Phase 2
-Fact Extraction
-
-Goal:
-
-raw_text -> structured_json
-Prompt rules:
-
-Extract ONLY explicitly stated information.
+```
 
-Never infer.
-Never guess.
-Return JSON.
-Example output:
-
-{
-"diagnoses": [],
-"medications": [],
-"allergies": [],
-"labs": []
-}
-Every fact must include source tracking.
-
-Example:
-
-{
-"value": "Pneumonia",
-"source": "progress_note_1.pdf"
-}
-Phase 3
-Patient Memory
+These flags appear verbatim in the final summary. The summary generator is also prompted to surface all flags and never resolve them silently.
 
-Central source of truth.
+---
 
-Example:
+## Conflict detection
 
-patient_memory = {
-"demographics": {},
-"diagnoses": [],
-"medications": [],
-"labs": [],
-"allergies": []
-}
-Agent reasons over memory.
+When facts from multiple PDFs are merged into `PatientMemory`, the `_merge_list` method compares incoming values against existing ones by a unique key. If the same item exists in two documents with different field values (e.g. two different discharge diagnoses), a `ConflictRecord` is created and stored.
 
-Not raw PDFs.
+Conflicts are surfaced in the summary as-is — the agent never picks one version over the other.
 
-Phase 4
-Agent State
+---
 
-Example:
+## Medication reconciliation
 
-class AgentState:
-memory
-missing_fields
-conflicts
-pending_items
-iteration
-Phase 5
-Planner
+`MedicationReconciliation` compares admission medications against discharge medications and produces four lists:
 
-Input:
+- **Added** — present at discharge, no admission record
+- **Removed** — present at admission, absent at discharge
+- **Changed** — same medication, different dosage
+- **Untagged** — medication type could not be determined
 
-AgentState
-Output:
+Any medication in the first three lists gets flagged for clinician review with a note that no documented reason was found. The agent does not silently resolve these.
 
-{
-"tool": "find_medications",
-"reason": "Discharge medications missing"
-}
-Planner decides next action.
+---
 
-This satisfies the "real agent loop" requirement.
+## Drug interaction checker
 
-Phase 6
-Tools
+`DrugInteractionChecker` runs against the final discharge medication list. It uses a mocked interaction database for this submission. If a high-severity interaction is found, the agent escalates it — the interaction appears prominently in the summary and is not buried in a footnote.
 
-Medication Reconciliation
-Input:
+---
 
-admission_meds
-discharge_meds
-Output:
+## Failure handling
 
-{
-"added": [],
-"removed": [],
-"changed": []
-}
-If reason missing:
+Every tool call is wrapped in a `try/except`. If a tool fails:
 
-Medication change requires reconciliation review.
-Conflict Detector
-Input:
+- The error is logged in the trace
+- A `MISSING - CLINICIAN REVIEW REQUIRED` flag is added to memory for that field
+- The agent continues planning — it does not crash or behave as if the call succeeded
 
-diagnoses
-Output:
+Summary generation failure writes a hard fallback:
 
-{
-"conflicts": []
-}
-Example:
+```
+SUMMARY GENERATION FAILED — CLINICIAN REVIEW REQUIRED
+```
 
-Pneumonia
-CHF
-Flag conflict.
+---
 
-Do not choose one.
+## Output
 
-Pending Results Checker
-Look for:
+For each patient the system produces:
 
-pending
-awaiting
-in progress
-Output:
+- `outputs/summary.txt` — the structured discharge summary draft
+- `outputs/trace.json` — the full step-by-step agent trace
 
-{
-"pending_results": []
-}
-Phase 7
-Agent Loop
+---
 
-Example:
+## How to run
 
-while state.iteration < 10:
+```bash
+# Install dependencies
+pip install -r requirements.txt
 
-    plan = planner.plan(state)
+# Set your API keys
+export OPENAI_API_KEY=your_key
+export ANTHROPIC_API_KEY=your_key
 
-    result = execute(plan)
+# Point to a patient folder and run
+# Edit PATIENT_DIR in main.py to your patient folder path
+python main.py
+```
 
-    state.update(result)
+Patient PDFs should be placed in a folder under `data/`, e.g. `data/patient_001/`.
 
-    trace_logger.log(...)
+---
 
-    if summary_ready:
-        break
+## Stack
 
-Hard iteration cap required.
+| Component        | Technology                        |
+| ---------------- | --------------------------------- |
+| PDF → image      | pdfium                            |
+| OCR / vision     | Claude Haiku (`claude-haiku-4-5`) |
+| Fact extraction  | GPT-4o-mini (structured outputs)  |
+| Drug interaction | Mocked database                   |
+| Language         | Python                            |
+| Frameworks       | None — built from scratch         |
 
-Phase 8
-Summary Generator
+---
 
-Generate:
+## Part 2 — Learning from doctor edits
 
-Demographics
+Not attempted in this submission. See "What I'd do with more time" below.
 
-Admission Date
+---
 
-Discharge Date
+## Limitations
 
-Diagnoses
+**Rule-based planner** — the planner uses `if/else` logic on memory state rather than dynamic LLM replanning. This means it follows a fixed execution order and cannot adapt mid-loop if, for example, a late-stage document changes an earlier conclusion. A proper agentic planner would re-evaluate the full state after each step.
 
-Hospital Course
+**Single patient at a time** — the system currently runs on one `PATIENT_DIR` at a time. Batch processing across a patient set is not implemented.
 
-Procedures
+**Mocked drug interactions** — the interaction checker uses hardcoded data. A production system would call a real pharmacological database (e.g. DrugBank, OpenFDA).
 
-Medications
+**No cross-patient memory** — the agent has no memory across patients. Each run starts fresh.
 
-Allergies
+**OCR quality** — for heavily degraded or low-resolution scans, Claude Haiku may miss or misread content. There is no confidence score or fallback for low-quality extractions.
 
-Follow Up
+---
 
-Pending Results
+## What I'd do with more time
 
-Discharge Condition
-
-Rules:
-
-Only use sourced facts.
-
-Missing -> MISSING
-Conflict -> CONFLICT DETECTED
-Phase 9
-Observability Trace
-
-Every step:
-
-{
-"step": 1,
-"reason": "Need diagnoses",
-"tool": "extract_diagnoses",
-"input": "...",
-"result": "...",
-"next_action": "..."
-}
-Save to:
-
-outputs/patient_x/trace.json
-Embeddings Decision
-Embeddings are OPTIONAL.
-
-Do not use embeddings for disease extraction.
-
-Use embeddings only for evidence retrieval.
-
-Example:
-
-retrieve(
-query="heart failure diagnosis"
-)
-Returns supporting chunks.
-
-Agent reasons over those chunks.
-
-Part 2 Strategy (Only After Part 1 Works)
-Implement:
-
-Simulated Doctor
-Input:
-
-Draft Summary
-Output:
-
-Corrected Summary
-Rules:
-
-Add missing pending labs
-
-Fix medication omissions
-
-Correct incomplete sections
-
-Reward Metric
-Use edit distance:
-
-reward = 1 - (
-edit_distance /
-total_characters
-)
-Higher reward = fewer corrections.
-
-Learning Mechanism
-Simple correction memory.
-
-Example:
-
-[
-{
-"error":
-"Pending labs omitted",
-"correction":
-"Always include pending labs"
-}
-]
-Inject into future prompts.
-
-No fine-tuning needed.
-
-Tonight's Priority Order
-PDF Extraction
-
-Fact Extraction
-
-Patient Memory
-
-Summary Generation
-
-Agent Loop
-
-Medication Reconciliation
-
-Conflict Detection
-
-Trace Logging
-
-Part 2 (only if time remains)
-
-Critical Reminder
-Do not optimize.
-
-Do not overengineer.
-
-Do not build LangGraph workflows.
-
-Do not build multiple agents.
-
-Get one patient running end-to-end first:
-
-Patient Folder
-↓
-PDF Extraction
-↓
-Fact Extraction
-↓
-Patient Memory
-↓
-Summary Draft
-Once that works, everything else becomes incremental.
-
-Close
+- Replace the rule-based planner with an LLM-driven replanner that re-evaluates state after each step
+- Add batch patient support with a summary report across all patients
+- Integrate a real drug interaction API
+- Add a confidence score to extracted facts, with low-confidence items auto-flagged
+- Implement Part 2: a simulated doctor reviewer that generates (draft, edited) pairs, with edit distance as the reward signal and a correction-memory mechanism injected into future prompts
+- Add an evaluation harness to measure section accuracy across patients
