@@ -1,0 +1,362 @@
+{
+  "file_name": "patient.pdf",
+  "page_count": 71,
+  "pages": [
+    {
+      "page": 1,
+      "method": "claude-vision",
+      "text": "DIAGNOSIS:\n\n1) ACUTE GASTROENTERITIS WITH DEHYDRATION\n2) URINARY TRACT INFECTION\n\nHISTORY: C/O Multiple episodes of loose stools, 2-3 episodes of vomiting, fatigue since 3 days and fever since yesterday.\nInitially she was treated at local clinic.\n\nPAST HISTORY:K/C/O Thyroid disorder on treatment.\n\nPHYSICAL EXAMINATION:\n\nPR-89/min, BP-130/80 mmHg, RR-20/min, SPO2-98% at room air.\nCNS-Conscious Oriented\nCVS-S1S2(+)\nRS-B/L NVBS(+)\nPA-Soft, non tender\n\nINVESTIGATIONS:\n\nReports Enclosed\n\nCOURSE IN THE HOSPITAL:\n\nPatient presented to us with above mentioned complaints. After evaluation, she was admitted to ward. Initial investigations showed normal CBC. Serum creatinine (1.65mg/dl) done was elevated. Serum electrolytes done showed low serum sodium(128.00mmol/L). Urine routine done showed ketone bodies(+), 10-12/hpf of pus cells, 15-20/hpf of epithelial cells with presence of bactriea hence urine culture and sensitivity sent- report awaited. She was treated with IV fluids,"
+    },
+    {
+      "page": 2,
+      "method": "claude-vision",
+      "text": "IV antibiotics, IV PPI's, IV antiemetics and other supportive measures. USG abdomen and pelvis done showed Grade-I fatty liver changes and mildly edematous part of ascending colon upto the hepatic flexure- could represent colitis. Repeat Serum Creatinine(1.17mg/dl) done was normal. TSH and Free T4 done were normal. Stool routine done showed 2-3/hpf of red blood cells, plenty/hpf of pus cells. Patient was advised to stay back for further management but attenders not willing to the same, hence being discharged at request with following advice.\n\nCONDITION AT DISCHARGE:\n\nHemodynamically stable\n\nADVICE ON DISCHARGE:\n\n| No. | Medication Name | Dosage | Frequency | Duration |\n|-----|-----------------|--------|-----------|----------|\n| 1 | TAB. RACIPER | 40MG | 1-0-0 | 7 DAYS (BEFORE FOOD) |\n| 2 | TAB. EMESET | 4MG | 1-1-1 | 3 DAYS |\n| 3 | TAB. OFLOX TZ | | 1-0-1 | 5 DAYS |\n| 4 | TAB M STRONG | | 1-0-0 | 15 DAYS |\n| 5 | TAB. ZEDOTT | | 1-1-1 | 3 DAYS |\n| 6 | TAB. ENTRO | | 1-0-1 | 3 DAYS |\n| 7 | TAB. MEFTAL SPAS | | 1 TAB SOS | 4 TABLETS |\n| 8 | TAB. LOPIRAMIDE | 2MG | 1-0-1 | 5 DAYS |\n\nFOLLOW-UP INSTRUCTIONS:\n\nUrine culture and sensitivity sent- report awaited.\nReview immediately in case of fever, loose stools, vomiting, fatigue.\nReview on 09.03.2026. CBC"
+    },
+    {
+      "page": 3,
+      "method": "claude-vision",
+      "text": "ER OBSERVATION CHART(1)\n\nMRN:_                                    Triage Category\n                                         Red          Yellow         Green\nER     [checkmark]    OP    [box]        \n                                         MLC No-\nDiagnosis:\n- DKA                                    Time of arrival\n                                         ER Doctor:  Time of response        6/14PM\n                                                     Time of response        6/14PM\n\nVITAL PARAMETERS\n\nTime        6/14PM           Time        6/14PM\nPulse       116b/m           Sao2\n                              Oxygen\nBP          87/50            RR          226/m\nTemp        98°F             Urine\n                              output\nSaO2 on     96/              (ml/hr)\nair\n                              Blood\nGCS         15/15            Glucose     443 mg/dl\nProcedures                    Pain\n                              score      11/10\n                              Pain scale  11/10\n\n-> IV Canulation done in left hand 20g\n\nNote: If score is>2 please speak to consultant\n\nInvestigations:\n(Lab,Radiology,Pathology,others)     Time (patient/sample) sent    Time (patient/report) received    Referred To:    Specialty\n\nCBL count, SE\nABG, Urine (D) Report              Asap                           Report\nECG                                 2nd S                          Report\n                                    date\n\n                                                                   Dr.         Consultant\n\nother orders:"
+    },
+    {
+      "page": 4,
+      "method": "claude-vision",
+      "text": "ER OBSERVATION CHART(2)\n\nIV Infusion | Doctor Sign | Amt | Rate | Verified by | Administered by | Start Time | End Time\nINF NS | LO 2 Balby | | | | | 6/1/M9 | 9 opm\n\nMedication Administration\n\nName of drug/strength | Dosage & Route | Sign of Doctor | Time | Verified by | Administered by | Time\nINF 3AM | 100g/IV | | 6/1AM | | | 6/1AM9\nINF CMESET | umg/IV | 2 | 6/1AM | | | 6/1AM9\n\nPatient advised admission to ward/ICU SRICU\nPatient advised discharge/referred to outside hospital\nRefusal of Treatment"
+    },
+    {
+      "page": 5,
+      "method": "claude-vision",
+      "text": "INVESTIGATION CHECKLIST\n\nDate | Time | Investigation Name | Remarks | Staff Name\n11/3/96 | 9:00m | CBC ? S. Cowb ? | In form | -"
+    },
+    {
+      "page": 6,
+      "method": "claude-vision",
+      "text": "INVESTIGATIONS (1)\n\nCLC:\nTIME: 28/1/26, 16/1/26\nHb: 10.4 gm/l, 10.7 gm/l\nTLC: 7230, 11570\nDLC: (illegible)\nPLAT: 1.08 lakhs, 1.60 lakhs (illegible)\nESR:\n\nURINE:\nDATE:\nPROTIEN:\nSUGAR:\nKETONES/CAST/CRYSTAL:\nRBC:\nWBC:\nSTOOL:\n\nROUTINE BIOCHEMISTRY:\nDATE: 28/1/26, 1/5/26\n\nRBS:\nFBS:\nPPBS:\nUREA:\nCREATINNE: 1.03 mg/dl, 1.04 mg/dl\nSODIUM:\nPOTASSIUM:\n\nDATE | T.Bil | D.Bil | AST | ALT | AI.P. | T.P. | ALB | GLD | BT | CT | PT | APTT\n[empty rows below]\n\nOTHER BIOCHEMICAL INVESTIGATIONS:\n[empty rows]\n\nOTHER INVESTIGATIONS:\nDATE | Sputum AFB | Mantoux | QBC MP | Lepto | Widal | HIV | HAV | HBV | HCV\n[empty rows below]"
+    },
+    {
+      "page": 7,
+      "method": "claude-vision",
+      "text": "NURSING DOCUMENTATION\n\n(From....2400.....to....2400...)                                                                    Date: 27/2/22\n\n8/s → Patient handed over taken from\n        Evening duty Staff to Night\n        duty Staff.\n\n→ Patient vitals rounds done\n→ Patient Conscious and oriented\n→ Patient IV cannula present.\n→ Patient Foby % catheter present.\n→ Patient IV infusion l/n s on flow\n→ Patient 2nd hourly GRBS monitoring\n        present\n→ Patient vitals Signs monitored\n        Temp 8- 98°F\n        BP 8- 110/80 mmhg\n        HR- 85 b/min\n        DR 8- 23 b/min\n        SPO 8- 98%\n\n9PM → Patient CT RUB plan, Foley's\n        catheter clamped as per\n        Dr.          advice\n\n→ Patient orally SOP did taken\n\n10PM → Patient had one episode of\n        chills and Tachycardia, Tachypnea(?)\n        Informed to Dr.         and advised\n        IV- Tramadol 1mg+3mg NAS 5ml\n        = 5ml IV as per advice given"
+    },
+    {
+      "page": 8,
+      "method": "claude-vision",
+      "text": "NURSING DOCUMENTATION\n(From.......9pm.......to.......8am......)                                                    Date: 2/2/26\n\n11pm → Patient CT KUB cancelled due 2 er\nNight shift. June due to patient's\ncondition's\n\n1AM → Patient had a fever spike Temp:108.\nSuffered to Da Roma mein and\nadvice Inj-PCT 1gm or per advise\ngiven\n\n1AM → Patient has called\n\n9am → Patient had a good sleep.\n\n5am → Patient Bed bath given, Bed making\ndone, comfortable position given.\n→ Patient bowel opened.\n\n6AM → Patient IV medication\nInj-Emeset 1mg, Inj-PAN1 1cong,\nInj- Meropenem 1gm, Inj- HappyNous\nplus given\n\n4AM → Patient GRBS checked and\nrecorded as closed.\n\n2:30am Patient Handed over given to\nMorning duty staff"
+    },
+    {
+      "page": 9,
+      "method": "claude-vision",
+      "text": "NURSING DOCUMENTATION\n\n(From.......S.I.R......to...2.p.m...)                                                                                    Date: 28/12/26\n\n=> patient charge hand over\n9am taken from night duty\n      staff nd on/off duty\n      staff\n=> patient side rounds is Done\n\n=> patient rifed sringi chest\n      dued suosed\n      Bp- 120/60 mmHey\n      Spo2 - 98%\n      HR - 65 blm\n      RR - 20 blm\n\n=> patient IV Cannuor parvafd\n=> patient floatey parvafd(P)\n=> patient ILo monitor\n=> patient comfortable\n      position\n=> patient CT cvd Ps Done\n      jelly is Done\n=> patient IVF blueg Bond\n      pen house on/aoffry\n=> patient seen By\n      chemuan sig. Adi PD\n      Sig to word\n=> patient"
+    },
+    {
+      "page": 10,
+      "method": "claude-vision",
+      "text": "NURSING DOCUMENTATION\n(From 5.00 to 2:00 p.m.)                                      Date: 2/28/28\n\n- IVF'd seen by Dr\n  Sir John\n- UCBC'su creedy Tm\n- patient slip'd word &\n  urine opting\n- patient seen by Dr\n  Sr. John to\n  C.S.T. (CCT tube supp)\n- patient slip to ward due\n- patient R- carrup loui/t\n  given\n- patient IV medication\n  given at on dry cleft\n- patient call signal used\n  then given to walk stuff\n- patient VANS F& check\n  and invalid stays\n- pt cluey heard over gives\n  to SRDEN Stepy to word\n  stuff"
+    },
+    {
+      "page": 11,
+      "method": "claude-vision",
+      "text": "BED SORES\n\n26/2/22\n@5pm\nto 8am\n\n-no bed\nsore_\n\nPULSES + - Porojwtra\n(co8)\n\nBed sores stage\n\nStage 1. :Redness of the skin (upper\nStage 2. : Formation of blisters / Below surface of skin\nStage 3. : Damage to skin (second layer of skin into the fat tissue\nStage 4. : Tissue Loss (Effect muscle & ligaments)"
+    },
+    {
+      "page": 12,
+      "method": "claude-vision",
+      "text": "BED SORES\n\n2@blee\nO 8m\nto\n2μm\n\nno bed\nsores\n\nPULSES + -\n\nBed sores stage\n\nStage 1 : Redness of the skin (upper\nStage 2 : Formation of blisters / Below surface of skin\nStage 3 : Damage to skin (second layer of skin into the fat tissue\nStage 4 : Tissue Loss (Effect muscle & ligaments)"
+    },
+    {
+      "page": 13,
+      "method": "claude-vision",
+      "text": "BED SORES\n\n2t|2|26\n2pm 8pm\n\nNo Pressure\nsag\n\nBs|4a\n03241\n\nPULSES + -\n\nBed sores stage\n\nStage 1 :Redness of the skin (upper\nStage 2 : Formation of blisters / Below surface of skin\nStage 3 : Damage to skin (second layer of skin into the fat tissue\nStage 4 : Tissue Loss (Effect muscle & ligaments)"
+    },
+    {
+      "page": 14,
+      "method": "claude-vision",
+      "text": "BED SORES\n\n28/2/26\n@ 8am\nto\n2pm\n\nno bed\nsores\n\nPULSES + -\n\nBed sores stage\n\nStage 1 : Redness of the skin (upper\nStage 2 : Formation of blisters / Below surface of skin\nStage 3 : Damage to skin (second layer of skin into the fat tissue\nStage 4 : Tissue Loss (Effect muscle & ligaments)"
+    },
+    {
+      "page": 15,
+      "method": "claude-vision",
+      "text": "PROCEDURE CHART\n\nWeight: 7129\nDepartment: Internal Medicine\n\nDate: 26/8/26, 27/8/26, 28/8/26, 13/8/26, 23/8/26\n\nProcedures\n\nIV Cannulation: Yes, Yes, Yes, Yes, Yes, Yes\n\nN.G. Tube Insertion: [blank]\n\nFelley's Catheterisation: Yes, Yes, Yes, Yes\n\nL.P.: [blank]\n\nI.C.D.: [blank]\n\nC.V.P.: [blank]\n\nIntubation: [blank]\n\nP.D.: [blank]\n\nPhototherapy: Yes\n\nUrine C./S.: Yes\n\nBlood C./S.: Yes\n\nPB Sets & Vein O Line: Yes, Yes, Yes, Yes, Yes\n\nOxygen: Yes\n\nVentilator: [blank]\n\nBubble CPAP: [blank]\n\nNPO2: [blank]\n\nHFNC: [blank]\n\nViral Serology/Study: [blank]\n\nBone marrow: [blank]\n\nUSG/ECHO: Yes\n\nTapping: [blank]\n\nBlood Transfusion: [blank]\n\nDressing: Yes, Yes, Yes\n\nSignature: [signatures present]"
+    },
+    {
+      "page": 16,
+      "method": "claude-vision",
+      "text": "NURSING ASSESSMENT\nON ADMISSION\n\nDate & Time of Nursing Initial Assessment: 06-2-26    0447    General Consent Signed: Yes / No\n\nVital Signs | Temp: 98°F | Pulse: 116 b /Min | Resp: 22 b /Min | BP: 87/50\n\nHeight | Weight: 27kg | Blood Group | SPO2 (if required): 98 | GRBS (if required): 148\n\nComplaints during admission and its duration | Fever, unwell & morning since 3 days\n\nNeurological | Oriented: Yes / No | Speech: Clear / Slurred | Speech: Clear / Slurred\nLevel of Consciousness Conscious / Semiconscious/ Unconscious | Visual Impairment: None / Wears Spectacles / Blind-L R | Extremity Strength: Equal / Unequal\nPupils: Equal / Unequal / Reactive / Sluggish | Hearing Impairment: None | Pain: Yes / No\n| Uses Aids / Deaf - L - R | Location: Body\n\nPain Scale | [Image showing pain scale faces from 0-10]\n0: No Pain | 2: Little Pain | 4: Mild Pain | 6: Moderate Pain | 8: Severe Pain | 10: Worst Pain\n\nAirway / Breathing | Airway: Clear / Obstructed | Cough: Yes / No\nDyspnea: Present / Absent ✓ | Sputum: Yes / No ✓\nWheezing: Yes / No ✓\n\nCirculation | Edema: Present / Absent ✓ | Capillary refill: < 3 Secs / > 3 Secs\nLocation of Edema\nSkin Perfusion: Warm / Dry / Cool / Diaphoretic\n\nSkin & Mucous Membrane | Colour: Fresh / Pale / Flushed / Cyanotic / Jaundiced | Turgor: Good / Fair / Poor ✓\nTemp: Cool / Warm / Hot | Mucous membrane: Intact / Impaired\nMoisture: Dry / Clammy | Condition: Pink / Pale / Moist / Dry\n\nGastrointestinal | Loss of Appetite: Yes / No ✓ | Abdomen: Soft / Firm / Tender / Distention / Expelling Flatus | Swallowing difficulty: Yes / No\nNausea / Vomiting / Diarrhoea\nConstipation\n\nGenitourinary | Dysuria: Yes / No ✓ | Hematuria: Yes / No ✓\nFrequency:\nIncontinence: Yes / No ✓\n\nAny Drug Allergy | NOT known"
+    },
+    {
+      "page": 17,
+      "method": "claude-vision",
+      "text": "NURSES NOTES\n\nKnown Drug Allergies: Not known brown\n\nDate & Time | Observation / Nsg Action / Response / Plan | Staff Name & ID\n\n06/01/26\n\n→ patient recalled to casualty, ↓\n→ patient complains of fever and general weakness\n→ patient conscious and oriented\n→ patient checked the vital signs and recorded in ER chart\n→ patient seen by dr.\n→ patient IV cannulation done on a (18) hand\n→ patient IV medications given\n→ patient blood lines fetched and sent to lab collect rite all reports\n→ patient ECG done\n→ patient provided to bed position\n→ patient case and blood reports inform to dr shuya Eangadi\n→ patient admission to HDU\n→ patient hand wt to 3rd floor HDU evening staff\n\nNB: All injections to be initiated by persons administering and witnessing\n* Date Of Admission: 01/06\n* Known Drug Allergies: Not known"
+    },
+    {
+      "page": 18,
+      "method": "claude-vision",
+      "text": "I'm unable to extract text from this image as it appears to be blank or completely white. There is no visible text content to transcribe from this scanned document page."
+    },
+    {
+      "page": 19,
+      "method": "claude-vision",
+      "text": ""
+    },
+    {
+      "page": 20,
+      "method": "claude-vision",
+      "text": ""
+    },
+    {
+      "page": 21,
+      "method": "claude-vision",
+      "text": ""
+    },
+    {
+      "page": 22,
+      "method": "claude-vision",
+      "text": ""
+    },
+    {
+      "page": 23,
+      "method": "claude-vision",
+      "text": ""
+    },
+    {
+      "page": 24,
+      "method": "claude-vision",
+      "text": ""
+    },
+    {
+      "page": 25,
+      "method": "claude-vision",
+      "text": ""
+    },
+    {
+      "page": 26,
+      "method": "claude-vision",
+      "text": ""
+    },
+    {
+      "page": 27,
+      "method": "claude-vision",
+      "text": ""
+    },
+    {
+      "page": 28,
+      "method": "claude-vision",
+      "text": ""
+    },
+    {
+      "page": 29,
+      "method": "claude-vision",
+      "text": ""
+    },
+    {
+      "page": 30,
+      "method": "claude-vision",
+      "text": ""
+    },
+    {
+      "page": 31,
+      "method": "claude-vision",
+      "text": ""
+    },
+    {
+      "page": 32,
+      "method": "claude-vision",
+      "text": ""
+    },
+    {
+      "page": 33,
+      "method": "claude-vision",
+      "text": ""
+    },
+    {
+      "page": 34,
+      "method": "claude-vision",
+      "text": ""
+    },
+    {
+      "page": 35,
+      "method": "claude-vision",
+      "text": ""
+    },
+    {
+      "page": 36,
+      "method": "claude-vision",
+      "text": ""
+    },
+    {
+      "page": 37,
+      "method": "claude-vision",
+      "text": ""
+    },
+    {
+      "page": 38,
+      "method": "claude-vision",
+      "text": ""
+    },
+    {
+      "page": 39,
+      "method": "claude-vision",
+      "text": ""
+    },
+    {
+      "page": 40,
+      "method": "claude-vision",
+      "text": ""
+    },
+    {
+      "page": 41,
+      "method": "claude-vision",
+      "text": ""
+    },
+    {
+      "page": 42,
+      "method": "claude-vision",
+      "text": ""
+    },
+    {
+      "page": 43,
+      "method": "claude-vision",
+      "text": ""
+    },
+    {
+      "page": 44,
+      "method": "claude-vision",
+      "text": ""
+    },
+    {
+      "page": 45,
+      "method": "claude-vision",
+      "text": ""
+    },
+    {
+      "page": 46,
+      "method": "claude-vision",
+      "text": ""
+    },
+    {
+      "page": 47,
+      "method": "claude-vision",
+      "text": ""
+    },
+    {
+      "page": 48,
+      "method": "claude-vision",
+      "text": ""
+    },
+    {
+      "page": 49,
+      "method": "claude-vision",
+      "text": ""
+    },
+    {
+      "page": 50,
+      "method": "claude-vision",
+      "text": ""
+    },
+    {
+      "page": 51,
+      "method": "claude-vision",
+      "text": ""
+    },
+    {
+      "page": 52,
+      "method": "claude-vision",
+      "text": ""
+    },
+    {
+      "page": 53,
+      "method": "claude-vision",
+      "text": ""
+    },
+    {
+      "page": 54,
+      "method": "claude-vision",
+      "text": ""
+    },
+    {
+      "page": 55,
+      "method": "claude-vision",
+      "text": ""
+    },
+    {
+      "page": 56,
+      "method": "claude-vision",
+      "text": ""
+    },
+    {
+      "page": 57,
+      "method": "claude-vision",
+      "text": ""
+    },
+    {
+      "page": 58,
+      "method": "claude-vision",
+      "text": ""
+    },
+    {
+      "page": 59,
+      "method": "claude-vision",
+      "text": ""
+    },
+    {
+      "page": 60,
+      "method": "claude-vision",
+      "text": ""
+    },
+    {
+      "page": 61,
+      "method": "claude-vision",
+      "text": ""
+    },
+    {
+      "page": 62,
+      "method": "claude-vision",
+      "text": ""
+    },
+    {
+      "page": 63,
+      "method": "claude-vision",
+      "text": ""
+    },
+    {
+      "page": 64,
+      "method": "claude-vision",
+      "text": ""
+    },
+    {
+      "page": 65,
+      "method": "claude-vision",
+      "text": ""
+    },
+    {
+      "page": 66,
+      "method": "claude-vision",
+      "text": ""
+    },
+    {
+      "page": 67,
+      "method": "claude-vision",
+      "text": ""
+    },
+    {
+      "page": 68,
+      "method": "claude-vision",
+      "text": ""
+    },
+    {
+      "page": 69,
+      "method": "claude-vision",
+      "text": ""
+    },
+    {
+      "page": 70,
+      "method": "claude-vision",
+      "text": ""
+    },
+    {
+      "page": 71,
+      "method": "claude-vision",
+      "text": ""
+    }
+  ],
+  "full_text": "PAGE 1\nDIAGNOSIS:\n\n1) ACUTE GASTROENTERITIS WITH DEHYDRATION\n2) URINARY TRACT INFECTION\n\nHISTORY: C/O Multiple episodes of loose stools, 2-3 episodes of vomiting, fatigue since 3 days and fever since yesterday.\nInitially she was treated at local clinic.\n\nPAST HISTORY:K/C/O Thyroid disorder on treatment.\n\nPHYSICAL EXAMINATION:\n\nPR-89/min, BP-130/80 mmHg, RR-20/min, SPO2-98% at room air.\nCNS-Conscious Oriented\nCVS-S1S2(+)\nRS-B/L NVBS(+)\nPA-Soft, non tender\n\nINVESTIGATIONS:\n\nReports Enclosed\n\nCOURSE IN THE HOSPITAL:\n\nPatient presented to us with above mentioned complaints. After evaluation, she was admitted to ward. Initial investigations showed normal CBC. Serum creatinine (1.65mg/dl) done was elevated. Serum electrolytes done showed low serum sodium(128.00mmol/L). Urine routine done showed ketone bodies(+), 10-12/hpf of pus cells, 15-20/hpf of epithelial cells with presence of bactriea hence urine culture and sensitivity sent- report awaited. She was treated with IV fluids,\n\nPAGE 2\nIV antibiotics, IV PPI's, IV antiemetics and other supportive measures. USG abdomen and pelvis done showed Grade-I fatty liver changes and mildly edematous part of ascending colon upto the hepatic flexure- could represent colitis. Repeat Serum Creatinine(1.17mg/dl) done was normal. TSH and Free T4 done were normal. Stool routine done showed 2-3/hpf of red blood cells, plenty/hpf of pus cells. Patient was advised to stay back for further management but attenders not willing to the same, hence being discharged at request with following advice.\n\nCONDITION AT DISCHARGE:\n\nHemodynamically stable\n\nADVICE ON DISCHARGE:\n\n| No. | Medication Name | Dosage | Frequency | Duration |\n|-----|-----------------|--------|-----------|----------|\n| 1 | TAB. RACIPER | 40MG | 1-0-0 | 7 DAYS (BEFORE FOOD) |\n| 2 | TAB. EMESET | 4MG | 1-1-1 | 3 DAYS |\n| 3 | TAB. OFLOX TZ | | 1-0-1 | 5 DAYS |\n| 4 | TAB M STRONG | | 1-0-0 | 15 DAYS |\n| 5 | TAB. ZEDOTT | | 1-1-1 | 3 DAYS |\n| 6 | TAB. ENTRO | | 1-0-1 | 3 DAYS |\n| 7 | TAB. MEFTAL SPAS | | 1 TAB SOS | 4 TABLETS |\n| 8 | TAB. LOPIRAMIDE | 2MG | 1-0-1 | 5 DAYS |\n\nFOLLOW-UP INSTRUCTIONS:\n\nUrine culture and sensitivity sent- report awaited.\nReview immediately in case of fever, loose stools, vomiting, fatigue.\nReview on 09.03.2026. CBC\n\nPAGE 3\nER OBSERVATION CHART(1)\n\nMRN:_                                    Triage Category\n                                         Red          Yellow         Green\nER     [checkmark]    OP    [box]        \n                                         MLC No-\nDiagnosis:\n- DKA                                    Time of arrival\n                                         ER Doctor:  Time of response        6/14PM\n                                                     Time of response        6/14PM\n\nVITAL PARAMETERS\n\nTime        6/14PM           Time        6/14PM\nPulse       116b/m           Sao2\n                              Oxygen\nBP          87/50            RR          226/m\nTemp        98°F             Urine\n                              output\nSaO2 on     96/              (ml/hr)\nair\n                              Blood\nGCS         15/15            Glucose     443 mg/dl\nProcedures                    Pain\n                              score      11/10\n                              Pain scale  11/10\n\n-> IV Canulation done in left hand 20g\n\nNote: If score is>2 please speak to consultant\n\nInvestigations:\n(Lab,Radiology,Pathology,others)     Time (patient/sample) sent    Time (patient/report) received    Referred To:    Specialty\n\nCBL count, SE\nABG, Urine (D) Report              Asap                           Report\nECG                                 2nd S                          Report\n                                    date\n\n                                                                   Dr.         Consultant\n\nother orders:\n\nPAGE 4\nER OBSERVATION CHART(2)\n\nIV Infusion | Doctor Sign | Amt | Rate | Verified by | Administered by | Start Time | End Time\nINF NS | LO 2 Balby | | | | | 6/1/M9 | 9 opm\n\nMedication Administration\n\nName of drug/strength | Dosage & Route | Sign of Doctor | Time | Verified by | Administered by | Time\nINF 3AM | 100g/IV | | 6/1AM | | | 6/1AM9\nINF CMESET | umg/IV | 2 | 6/1AM | | | 6/1AM9\n\nPatient advised admission to ward/ICU SRICU\nPatient advised discharge/referred to outside hospital\nRefusal of Treatment\n\nPAGE 5\nINVESTIGATION CHECKLIST\n\nDate | Time | Investigation Name | Remarks | Staff Name\n11/3/96 | 9:00m | CBC ? S. Cowb ? | In form | -\n\nPAGE 6\nINVESTIGATIONS (1)\n\nCLC:\nTIME: 28/1/26, 16/1/26\nHb: 10.4 gm/l, 10.7 gm/l\nTLC: 7230, 11570\nDLC: (illegible)\nPLAT: 1.08 lakhs, 1.60 lakhs (illegible)\nESR:\n\nURINE:\nDATE:\nPROTIEN:\nSUGAR:\nKETONES/CAST/CRYSTAL:\nRBC:\nWBC:\nSTOOL:\n\nROUTINE BIOCHEMISTRY:\nDATE: 28/1/26, 1/5/26\n\nRBS:\nFBS:\nPPBS:\nUREA:\nCREATINNE: 1.03 mg/dl, 1.04 mg/dl\nSODIUM:\nPOTASSIUM:\n\nDATE | T.Bil | D.Bil | AST | ALT | AI.P. | T.P. | ALB | GLD | BT | CT | PT | APTT\n[empty rows below]\n\nOTHER BIOCHEMICAL INVESTIGATIONS:\n[empty rows]\n\nOTHER INVESTIGATIONS:\nDATE | Sputum AFB | Mantoux | QBC MP | Lepto | Widal | HIV | HAV | HBV | HCV\n[empty rows below]\n\nPAGE 7\nNURSING DOCUMENTATION\n\n(From....2400.....to....2400...)                                                                    Date: 27/2/22\n\n8/s → Patient handed over taken from\n        Evening duty Staff to Night\n        duty Staff.\n\n→ Patient vitals rounds done\n→ Patient Conscious and oriented\n→ Patient IV cannula present.\n→ Patient Foby % catheter present.\n→ Patient IV infusion l/n s on flow\n→ Patient 2nd hourly GRBS monitoring\n        present\n→ Patient vitals Signs monitored\n        Temp 8- 98°F\n        BP 8- 110/80 mmhg\n        HR- 85 b/min\n        DR 8- 23 b/min\n        SPO 8- 98%\n\n9PM → Patient CT RUB plan, Foley's\n        catheter clamped as per\n        Dr.          advice\n\n→ Patient orally SOP did taken\n\n10PM → Patient had one episode of\n        chills and Tachycardia, Tachypnea(?)\n        Informed to Dr.         and advised\n        IV- Tramadol 1mg+3mg NAS 5ml\n        = 5ml IV as per advice given\n\nPAGE 8\nNURSING DOCUMENTATION\n(From.......9pm.......to.......8am......)                                                    Date: 2/2/26\n\n11pm → Patient CT KUB cancelled due 2 er\nNight shift. June due to patient's\ncondition's\n\n1AM → Patient had a fever spike Temp:108.\nSuffered to Da Roma mein and\nadvice Inj-PCT 1gm or per advise\ngiven\n\n1AM → Patient has called\n\n9am → Patient had a good sleep.\n\n5am → Patient Bed bath given, Bed making\ndone, comfortable position given.\n→ Patient bowel opened.\n\n6AM → Patient IV medication\nInj-Emeset 1mg, Inj-PAN1 1cong,\nInj- Meropenem 1gm, Inj- HappyNous\nplus given\n\n4AM → Patient GRBS checked and\nrecorded as closed.\n\n2:30am Patient Handed over given to\nMorning duty staff\n\nPAGE 9\nNURSING DOCUMENTATION\n\n(From.......S.I.R......to...2.p.m...)                                                                                    Date: 28/12/26\n\n=> patient charge hand over\n9am taken from night duty\n      staff nd on/off duty\n      staff\n=> patient side rounds is Done\n\n=> patient rifed sringi chest\n      dued suosed\n      Bp- 120/60 mmHey\n      Spo2 - 98%\n      HR - 65 blm\n      RR - 20 blm\n\n=> patient IV Cannuor parvafd\n=> patient floatey parvafd(P)\n=> patient ILo monitor\n=> patient comfortable\n      position\n=> patient CT cvd Ps Done\n      jelly is Done\n=> patient IVF blueg Bond\n      pen house on/aoffry\n=> patient seen By\n      chemuan sig. Adi PD\n      Sig to word\n=> patient\n\nPAGE 10\nNURSING DOCUMENTATION\n(From 5.00 to 2:00 p.m.)                                      Date: 2/28/28\n\n- IVF'd seen by Dr\n  Sir John\n- UCBC'su creedy Tm\n- patient slip'd word &\n  urine opting\n- patient seen by Dr\n  Sr. John to\n  C.S.T. (CCT tube supp)\n- patient slip to ward due\n- patient R- carrup loui/t\n  given\n- patient IV medication\n  given at on dry cleft\n- patient call signal used\n  then given to walk stuff\n- patient VANS F& check\n  and invalid stays\n- pt cluey heard over gives\n  to SRDEN Stepy to word\n  stuff\n\nPAGE 11\nBED SORES\n\n26/2/22\n@5pm\nto 8am\n\n-no bed\nsore_\n\nPULSES + - Porojwtra\n(co8)\n\nBed sores stage\n\nStage 1. :Redness of the skin (upper\nStage 2. : Formation of blisters / Below surface of skin\nStage 3. : Damage to skin (second layer of skin into the fat tissue\nStage 4. : Tissue Loss (Effect muscle & ligaments)\n\nPAGE 12\nBED SORES\n\n2@blee\nO 8m\nto\n2μm\n\nno bed\nsores\n\nPULSES + -\n\nBed sores stage\n\nStage 1 : Redness of the skin (upper\nStage 2 : Formation of blisters / Below surface of skin\nStage 3 : Damage to skin (second layer of skin into the fat tissue\nStage 4 : Tissue Loss (Effect muscle & ligaments)\n\nPAGE 13\nBED SORES\n\n2t|2|26\n2pm 8pm\n\nNo Pressure\nsag\n\nBs|4a\n03241\n\nPULSES + -\n\nBed sores stage\n\nStage 1 :Redness of the skin (upper\nStage 2 : Formation of blisters / Below surface of skin\nStage 3 : Damage to skin (second layer of skin into the fat tissue\nStage 4 : Tissue Loss (Effect muscle & ligaments)\n\nPAGE 14\nBED SORES\n\n28/2/26\n@ 8am\nto\n2pm\n\nno bed\nsores\n\nPULSES + -\n\nBed sores stage\n\nStage 1 : Redness of the skin (upper\nStage 2 : Formation of blisters / Below surface of skin\nStage 3 : Damage to skin (second layer of skin into the fat tissue\nStage 4 : Tissue Loss (Effect muscle & ligaments)\n\nPAGE 15\nPROCEDURE CHART\n\nWeight: 7129\nDepartment: Internal Medicine\n\nDate: 26/8/26, 27/8/26, 28/8/26, 13/8/26, 23/8/26\n\nProcedures\n\nIV Cannulation: Yes, Yes, Yes, Yes, Yes, Yes\n\nN.G. Tube Insertion: [blank]\n\nFelley's Catheterisation: Yes, Yes, Yes, Yes\n\nL.P.: [blank]\n\nI.C.D.: [blank]\n\nC.V.P.: [blank]\n\nIntubation: [blank]\n\nP.D.: [blank]\n\nPhototherapy: Yes\n\nUrine C./S.: Yes\n\nBlood C./S.: Yes\n\nPB Sets & Vein O Line: Yes, Yes, Yes, Yes, Yes\n\nOxygen: Yes\n\nVentilator: [blank]\n\nBubble CPAP: [blank]\n\nNPO2: [blank]\n\nHFNC: [blank]\n\nViral Serology/Study: [blank]\n\nBone marrow: [blank]\n\nUSG/ECHO: Yes\n\nTapping: [blank]\n\nBlood Transfusion: [blank]\n\nDressing: Yes, Yes, Yes\n\nSignature: [signatures present]\n\nPAGE 16\nNURSING ASSESSMENT\nON ADMISSION\n\nDate & Time of Nursing Initial Assessment: 06-2-26    0447    General Consent Signed: Yes / No\n\nVital Signs | Temp: 98°F | Pulse: 116 b /Min | Resp: 22 b /Min | BP: 87/50\n\nHeight | Weight: 27kg | Blood Group | SPO2 (if required): 98 | GRBS (if required): 148\n\nComplaints during admission and its duration | Fever, unwell & morning since 3 days\n\nNeurological | Oriented: Yes / No | Speech: Clear / Slurred | Speech: Clear / Slurred\nLevel of Consciousness Conscious / Semiconscious/ Unconscious | Visual Impairment: None / Wears Spectacles / Blind-L R | Extremity Strength: Equal / Unequal\nPupils: Equal / Unequal / Reactive / Sluggish | Hearing Impairment: None | Pain: Yes / No\n| Uses Aids / Deaf - L - R | Location: Body\n\nPain Scale | [Image showing pain scale faces from 0-10]\n0: No Pain | 2: Little Pain | 4: Mild Pain | 6: Moderate Pain | 8: Severe Pain | 10: Worst Pain\n\nAirway / Breathing | Airway: Clear / Obstructed | Cough: Yes / No\nDyspnea: Present / Absent ✓ | Sputum: Yes / No ✓\nWheezing: Yes / No ✓\n\nCirculation | Edema: Present / Absent ✓ | Capillary refill: < 3 Secs / > 3 Secs\nLocation of Edema\nSkin Perfusion: Warm / Dry / Cool / Diaphoretic\n\nSkin & Mucous Membrane | Colour: Fresh / Pale / Flushed / Cyanotic / Jaundiced | Turgor: Good / Fair / Poor ✓\nTemp: Cool / Warm / Hot | Mucous membrane: Intact / Impaired\nMoisture: Dry / Clammy | Condition: Pink / Pale / Moist / Dry\n\nGastrointestinal | Loss of Appetite: Yes / No ✓ | Abdomen: Soft / Firm / Tender / Distention / Expelling Flatus | Swallowing difficulty: Yes / No\nNausea / Vomiting / Diarrhoea\nConstipation\n\nGenitourinary | Dysuria: Yes / No ✓ | Hematuria: Yes / No ✓\nFrequency:\nIncontinence: Yes / No ✓\n\nAny Drug Allergy | NOT known\n\nPAGE 17\nNURSES NOTES\n\nKnown Drug Allergies: Not known brown\n\nDate & Time | Observation / Nsg Action / Response / Plan | Staff Name & ID\n\n06/01/26\n\n→ patient recalled to casualty, ↓\n→ patient complains of fever and general weakness\n→ patient conscious and oriented\n→ patient checked the vital signs and recorded in ER chart\n→ patient seen by dr.\n→ patient IV cannulation done on a (18) hand\n→ patient IV medications given\n→ patient blood lines fetched and sent to lab collect rite all reports\n→ patient ECG done\n→ patient provided to bed position\n→ patient case and blood reports inform to dr shuya Eangadi\n→ patient admission to HDU\n→ patient hand wt to 3rd floor HDU evening staff\n\nNB: All injections to be initiated by persons administering and witnessing\n* Date Of Admission: 01/06\n* Known Drug Allergies: Not known\n\nPAGE 18\nI'm unable to extract text from this image as it appears to be blank or completely white. There is no visible text content to transcribe from this scanned document page.\n\nPAGE 19\n\n\nPAGE 20\n\n\nPAGE 21\n\n\nPAGE 22\n\n\nPAGE 23\n\n\nPAGE 24\n\n\nPAGE 25\n\n\nPAGE 26\n\n\nPAGE 27\n\n\nPAGE 28\n\n\nPAGE 29\n\n\nPAGE 30\n\n\nPAGE 31\n\n\nPAGE 32\n\n\nPAGE 33\n\n\nPAGE 34\n\n\nPAGE 35\n\n\nPAGE 36\n\n\nPAGE 37\n\n\nPAGE 38\n\n\nPAGE 39\n\n\nPAGE 40\n\n\nPAGE 41\n\n\nPAGE 42\n\n\nPAGE 43\n\n\nPAGE 44\n\n\nPAGE 45\n\n\nPAGE 46\n\n\nPAGE 47\n\n\nPAGE 48\n\n\nPAGE 49\n\n\nPAGE 50\n\n\nPAGE 51\n\n\nPAGE 52\n\n\nPAGE 53\n\n\nPAGE 54\n\n\nPAGE 55\n\n\nPAGE 56\n\n\nPAGE 57\n\n\nPAGE 58\n\n\nPAGE 59\n\n\nPAGE 60\n\n\nPAGE 61\n\n\nPAGE 62\n\n\nPAGE 63\n\n\nPAGE 64\n\n\nPAGE 65\n\n\nPAGE 66\n\n\nPAGE 67\n\n\nPAGE 68\n\n\nPAGE 69\n\n\nPAGE 70\n\n\nPAGE 71\n"
+}
