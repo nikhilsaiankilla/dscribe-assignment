@@ -5,10 +5,10 @@ from datetime import datetime
 
 class TraceLogger:
 
-    def __init__(self):
+    def __init__(self, output_dir: Path = Path("outputs")):
         self.steps = []
-        self.output_dir = Path("outputs")
-        self.output_dir.mkdir(exist_ok=True)
+        self.output_dir = output_dir
+        self.output_dir.mkdir(exist_ok=True, parents=True)
 
     def log(self, entry: dict):
         entry["timestamp"] = datetime.now().isoformat()

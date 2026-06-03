@@ -9,7 +9,6 @@ from tools.medication_reconciliation import MedicationReconciliation
 from tools.drug_interaction import DrugInteractionChecker
 
 MAX_ITERATIONS = 10
-OUTPUT_DIR = Path("outputs")
 
 
 class DischargeAgent:
@@ -18,13 +17,15 @@ class DischargeAgent:
         self.planner = Planner()
         self.extractor = FactExtractor()
         self.generator = SummaryGenerator()
-        self.logger = TraceLogger()
         self.reconciler = MedicationReconciliation()
         self.drug_checker = DrugInteractionChecker()
 
-    def run(self, memory: PatientMemory, documents: list[dict]) -> str:
+    def run(self, memory: PatientMemory, documents: list[dict], output_dir: Path = Path("outputs")) -> str:
         iteration = 0
-        OUTPUT_DIR.mkdir(exist_ok=True)
+        output_dir.mkdir(exist_ok=True, parents=True)
+
+        # Instantiate trace logger explicitly targeted inside this patient's layout
+        logger = TraceLogger(output_dir=output_dir)
 
         while iteration < MAX_ITERATIONS:
             iteration += 1
@@ -33,7 +34,6 @@ class DischargeAgent:
             print(f"\n[Agent Step {iteration}] Tool: {plan['tool']}")
             print(f"  Reason: {plan['reason']}")
 
-            # --- EXECUTE ---
             tool_input = {}
             tool_result = {}
             next_decision = ""
@@ -149,7 +149,7 @@ class DischargeAgent:
                         "drug_interaction_check — FAILED - CLINICIAN REVIEW REQUIRED"
                     )
 
-                self.logger.log({
+                logger.log({
                     "step": iteration,
                     "reasoning": plan["reason"],
                     "tool": plan["tool"],
@@ -169,7 +169,7 @@ class DischargeAgent:
                 }
                 try:
                     summary = self.generator.generate(memory)
-                    summary_path = OUTPUT_DIR / "summary.txt"
+                    summary_path = output_dir / "summary.txt"
                     summary_path.write_text(summary, encoding="utf-8")
                     print(f"\n[✓] Summary saved to {summary_path}")
                     tool_result = {
@@ -179,8 +179,7 @@ class DischargeAgent:
                     }
                     next_decision = "Summary complete — agent loop done"
 
-                    # Log final step then save
-                    self.logger.log({
+                    logger.log({
                         "step": iteration,
                         "reasoning": plan["reason"],
                         "tool": plan["tool"],
@@ -188,20 +187,19 @@ class DischargeAgent:
                         "result": tool_result,
                         "next_decision": next_decision,
                     })
-                    self.logger.save()
+                    logger.save()
                     return summary
 
                 except Exception as e:
                     tool_result = {"error": str(e)}
                     next_decision = "Summary generation failed — retry or escalate"
-                    summary_path = OUTPUT_DIR / "summary.txt"
+                    summary_path = output_dir / "summary.txt"
                     summary_path.write_text(
                         "SUMMARY GENERATION FAILED — CLINICIAN REVIEW REQUIRED",
                         encoding="utf-8"
                     )
 
-            # Log every step with full trace
-            self.logger.log({
+            logger.log({
                 "step": iteration,
                 "reasoning": plan["reason"],
                 "tool": plan["tool"],
@@ -210,7 +208,7 @@ class DischargeAgent:
                 "next_decision": next_decision,
             })
 
-        self.logger.save()
+        logger.save()
         fallback = "AGENT LOOP EXCEEDED MAX ITERATIONS — CLINICIAN REVIEW REQUIRED"
-        (OUTPUT_DIR / "summary.txt").write_text(fallback, encoding="utf-8")
+        (output_dir / "summary.txt").write_text(fallback, encoding="utf-8")
         return fallback
