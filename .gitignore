@@ -9,6 +9,10 @@ venv/
 env/
 ENV/
 
+# patient data and cache!!
+data/
+cache/
+
 # Environment variables
 .env
 .env.*
